@@ -1,0 +1,5 @@
+*.obj
+.vs/
+Debug/
+OpenGL_4/DLL/
+OpenGL_4/GL/
