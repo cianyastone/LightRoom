@@ -117,7 +117,7 @@
     <ClCompile Include="Common\CWireCube.cpp" />
     <ClCompile Include="Common\CWireSphere.cpp" />
     <ClCompile Include="Common\Timer.cpp" />
-    <ClCompile Include="Example4.cpp" />
+    <ClCompile Include="LightRoom.cpp" />
     <ClCompile Include="InitShader.cpp" />
   </ItemGroup>
   <ItemGroup>

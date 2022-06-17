@@ -119,7 +119,7 @@
     <ClCompile Include="Common\Timer.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Example4.cpp">
+    <ClCompile Include="LightRoom.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
   </ItemGroup>

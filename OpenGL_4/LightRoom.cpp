@@ -27,7 +27,7 @@
 #define WIDTH_HALF (SCREEN_WIDTH/2) 
 #define HEIGHT_HALF (SCREEN_HEIGHT/2)
 #define SPACE_KEY 32
-#define SCREEN_SIZE 600
+#define SCREEN_SIZE 700
 #define HALF_SIZE SCREEN_SIZE /2 
 #define VP_HALFWIDTH  20.0f
 #define VP_HALFHEIGHT 20.0f
@@ -86,8 +86,9 @@ LightSource g_Light1 = {
 	0	,	// linearAttenuation	    (a + bd + cd^2)^-1 中的 b
 	0		// quadraticAttenuation (a + bd + cd^2)^-1 中的 c
 };
-//spotlight1
+//spotlight1 red light
 
+bool g_bLight1On = true;
 float g_fSpotLightR = 0.95f;
 float g_fSpotLightG = 0.15f;
 float g_fSpotLightB = 0.15f;
@@ -108,7 +109,9 @@ LightSource g_spotLight1 = {
 };
 vec4 g_fSpotLightI(g_fSpotLightR, g_fSpotLightG, g_fSpotLightB, 1.0f);
 CLineSegment *g_LightLine;
-//spotlight2
+//spotlight2 Blue Light
+
+bool g_bLight2On = true;
 float g_fSpotLightR2 = 0.15f;
 float g_fSpotLightG2 = 0.15f;
 float g_fSpotLightB2 = 0.85f;
@@ -129,7 +132,9 @@ LightSource g_spotLight2 = {
 };
 vec4 g_fSpotLightI2(g_fSpotLightR2, g_fSpotLightG2, g_fSpotLightB2, 1.0f);
 CLineSegment *g_LightLine2;
-//spotlight3
+//spotlight3 
+
+bool g_bLight3On = true;
 float g_fSpotLightR3 = 0.85f;
 float g_fSpotLightG3 = 0.25f;
 float g_fSpotLightB3 = 1.0f;
@@ -265,10 +270,6 @@ void init( void )
 	mxT = Translate(vT);
 	g_pObj3->SetTRSMatrix(mxT*mxS);
 	g_pObj3->SetShadingMode(GOURAUD_SHADING);
-	//wolf
-	//lowpolytree
-	//low-poly-mill
-	//wood_sphere_low
 	g_pObj4 = new CObj("./Common/Well.obj");
 	g_pObj4->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.85f, 0.8f, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
 	g_pObj4->SetKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
@@ -353,7 +354,7 @@ void init( void )
 	g_p2DBtn[0] = new C2DSprite; g_p2DBtn[0]->SetShader();
 	vColor.x = 1; vColor.y = 0; vColor.z = 0; g_p2DBtn[0]->SetDefaultColor(vColor);
 	mxS = Scale(0.1f, 0.1f, 1.0f);
-	mxT = Translate(-0.90f, -0.90f, 0);
+	mxT = Translate(0.60f, -0.90f, 0);
 	g_p2DBtn[0]->SetTRSMatrix(mxT*mxS);
 	g_p2DBtn[0]->SetViewMatrix(g_2DView);
 	g_p2DBtn[0]->SetViewMatrix(g_2DProj);
@@ -367,18 +368,20 @@ void init( void )
 
 	g_p2DBtn[2] = new C2DSprite; g_p2DBtn[2]->SetShader();
 	vColor.x = 0; vColor.y = 0; vColor.z = 1; g_p2DBtn[2]->SetDefaultColor(vColor);
-	mxT = Translate(0.90f, 0.90f, 0);
+	mxT = Translate(0.75f, -0.90f, 0);
 	g_p2DBtn[2]->SetTRSMatrix(mxT*mxS);
 	g_p2DBtn[2]->SetViewMatrix(g_2DView);
 	g_p2DBtn[2]->SetViewMatrix(g_2DProj);
 
 	g_p2DBtn[3] = new C2DSprite; g_p2DBtn[3]->SetShader();
 	vColor.x = 1; vColor.y = 1; vColor.z = 1; g_p2DBtn[3]->SetDefaultColor(vColor);
-	mxT = Translate(-0.90f, 0.90f, 0);
+	mxT = Translate(0.45f, -0.90f, 0);
 	g_p2DBtn[3]->SetTRSMatrix(mxT*mxS);
 	g_p2DBtn[3]->SetViewMatrix(g_2DView);
 	g_p2DBtn[3]->SetViewMatrix(g_2DProj);
 
+	//-------------------------------------------------------------
+	
 //
 	// 因為本範例不會動到 Projection Matrix 所以在這裡設定一次即可
 	// 就不寫在 OnFrameMove 中每次都 Check
@@ -411,8 +414,6 @@ void GL_Display( void )
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // clear the window
 
 	g_pChecker->Draw();
-	//g_pSphere->Draw();
-	//g_pCube->Draw();
 	g_pLight->Draw();
 	g_LeftWall->Draw();
 	g_RightWall->Draw();
@@ -508,6 +509,32 @@ void onFrameMove(float delta)
 	g_pSpotLight2->Update(delta);
 	g_pSpotLight3->Update(delta);
 	GL_Display();
+
+	//--------------------------------------------------------
+	if (g_bLight1On) {
+		g_spotLight1.diffuse = g_fSpotLightI;
+		g_spotLight1.specular = g_fSpotLightI;
+	}
+	else {
+		g_spotLight1.diffuse = 0;
+		g_spotLight1.specular = 0;
+	}
+	if (g_bLight2On) {
+		g_spotLight2.diffuse = g_fSpotLightI2;
+		g_spotLight2.specular = g_fSpotLightI2;
+	}
+	else {
+		g_spotLight2.diffuse = 0;
+		g_spotLight2.specular = 0;
+	}
+	if (g_bLight3On) {
+		g_spotLight3.diffuse = g_fSpotLightI3;
+		g_spotLight3.specular = g_fSpotLightI3;
+	}
+	else {
+		g_spotLight3.diffuse = 0;
+		g_spotLight3.specular = 0;
+	}
 }
 
 //----------------------------------------------------------------------------
@@ -521,13 +548,11 @@ void Win_Keyboard( unsigned char key, int x, int y )
 //----------------------------------------------------------------------------
 // Part 2 : for single light source
 	case 99: // c key
-		g_spotLight1.diffuse=0;
-		g_spotLight1.specular = 0;
+		g_bLight2On = !g_bLight2On;
 		//g_pSpotLight1->SetColor(0);
 		break;
 	case 100: // d key
-		g_spotLight1.diffuse = g_fSpotLightI;
-		g_spotLight1.specular = g_fSpotLightI;
+		g_bLight1On = !g_bLight1On;
 		//g_pSpotLight1->SetColor(g_fSpotLightI);
 		break;
 	case 65: // A key
@@ -589,10 +614,11 @@ void Win_Keyboard( unsigned char key, int x, int y )
         break;
     }
 }
-inline void ScreenToUICoordinate(int x, int y, vec2 &pt)
+
+inline void ScreenToUICoordinate(int x, int y, vec2& pt)
 {
-	pt.x = 2.0f*(float)x / SCREEN_WIDTH - 1.0f;
-	pt.y = 2.0f*(float)(SCREEN_HEIGHT - y) / SCREEN_HEIGHT - 1.0f;
+	pt.x = 2.0f * (float)x / SCREEN_SIZE - 1.0f;
+	pt.y = 2.0f * (float)(SCREEN_SIZE - y) / SCREEN_SIZE - 1.0f;
 }
 //----------------------------------------------------------------------------
 void Win_Mouse(int button, int state, int x, int y) {
@@ -602,34 +628,13 @@ void Win_Mouse(int button, int state, int x, int y) {
 			if (state == GLUT_DOWN) {
 				ScreenToUICoordinate(x, y, pt);
 				if (g_p2DBtn[0]->OnTouches(pt)) {
-					if (g_p2DBtn[0]->getButtonStatus()) {
-						g_spotLight1.diffuse = 0;
-						g_spotLight1.specular = 0;
-					} 
-					else {
-						g_spotLight1.diffuse = g_fSpotLightI;
-						g_spotLight1.specular = g_fSpotLightI;
-					}
+					g_bLight1On = !g_bLight1On;
 				}
 				if (g_p2DBtn[1]->OnTouches(pt)) {
-					if (g_p2DBtn[1]->getButtonStatus()) {
-						g_spotLight3.diffuse = 0;
-						g_spotLight3.specular = 0;
-					}
-					else {
-						g_spotLight3.diffuse = g_fSpotLightI3;
-						g_spotLight3.specular = g_fSpotLightI3;
-					}
+					g_bLight3On = !g_bLight3On;
 				}
 				if (g_p2DBtn[2]->OnTouches(pt)) {
-					if (g_p2DBtn[2]->getButtonStatus()) {
-						g_spotLight2.diffuse = 0;
-						g_spotLight2.specular = 0;
-					}
-					else {
-						g_spotLight2.diffuse = g_fSpotLightI2;
-						g_spotLight2.specular = g_fSpotLightI2;
-					}
+					g_bLight2On = !g_bLight2On;
 				}
 				if (g_p2DBtn[3]->OnTouches(pt)) {
 					if (g_p2DBtn[3]->getButtonStatus()) {
@@ -655,12 +660,12 @@ void Win_Mouse(int button, int state, int x, int y) {
 void Win_SpecialKeyboard(int key, int x, int y) {
 	auto camera = CCamera::getInstance();
 	vec4 camPos = camera->getViewPos();
-	float cameraSpeed = 0.05f;
+	float cameraSpeed = 0.3f;
 	vec4 localAt= camera->getAt();
 	
 	vec4 up = camera->getUp();
 	switch(key) {
-		case GLUT_KEY_UP:		// 目前按下的是向左方向鍵
+		case GLUT_KEY_UP:		// 目前按下的是向上方向鍵
 			printf("eye:%f\n", eye.x);
 			if (eye.x >= -8.0f && eye.x <= 8.0f && eye.z>=-8.0f && eye.z<=8.0f) {
 				eye = eye + cameraSpeed*normalize(vec4(at.x, 0, at.z, 0));
@@ -671,7 +676,7 @@ void Win_SpecialKeyboard(int key, int x, int y) {
 			camera->updateViewLookAt(eye, eye +at);
 
 			break;
-		case GLUT_KEY_DOWN:	// 目前按下的是向右方向鍵
+		case GLUT_KEY_DOWN:	// 目前按下的是向下方向鍵
 			if (eye.x >= -8.0f && eye.x <= 8.0f && eye.z >= -8.0f && eye.z <= 8.0f) {
 
 				eye = eye - cameraSpeed*normalize(vec4(at.x, 0, at.z, 0));
@@ -693,7 +698,7 @@ void Win_SpecialKeyboard(int key, int x, int y) {
 			camera->updateViewLookAt(eye, eye + at);
 
 			break;
-		case GLUT_KEY_RIGHT:		// 目前按下的是向左方向鍵
+		case GLUT_KEY_RIGHT:		// 目前按下的是向右方向鍵
 			if (eye.x >= -8.0f && eye.x <= 8.0f && eye.z >= -8.0f && eye.z <= 8.0f) {
 
 				eye = eye - cameraSpeed*normalize(vec4(sin(g_fTheta)*sin(g_fPhi + M_PI / 2), 0, sin(g_fTheta)*cos(g_fPhi + M_PI / 2), 0));
