@@ -662,7 +662,6 @@ void Win_SpecialKeyboard(int key, int x, int y) {
 	vec4 up = camera->getUp();
 	switch(key) {
 		case GLUT_KEY_UP:		// 目前按下的是向上方向鍵
-			printf("eye:%f\n", eye.x);
 			if (eye.x >= -8.0f && eye.x <= 8.0f && eye.z>=-8.0f && eye.z<=8.0f) {
 				eye = eye + cameraSpeed*normalize(vec4(at.x, 0, at.z, 0));
 			}
