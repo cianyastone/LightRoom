@@ -81,22 +81,22 @@ CWireSphere::CWireSphere(const GLfloat fRadius, const int iSlices, const  int iS
 	for( int i = 0 ; i < m_iNumVtx ; i++ ) m_pColors[i] = vec4(-1.0f,-1.0f,-1.0f,1.0f);
 
 #ifdef LIGHTING_WITHCPU
-	// Default Set shader's name
-	SetShaderName("vsLighting_CPU.glsl", "fsLighting_CPU.glsl");
+	// Default set shader's name
+	setShaderName("vsLighting_CPU.glsl", "fsLighting_CPU.glsl");
 #else // lighting with GPU
 #ifdef PERVERTEX_LIGHTING
-	SetShaderName("vsLighting_GPU.glsl", "fsLighting_GPU.glsl");
+	setShaderName("vsLighting_GPU.glsl", "fsLighting_GPU.glsl");
 #else
-	SetShaderName("vsPerPixelLighting.glsl", "fsPerPixelLighting.glsl");
+	setShaderName("vsPerPixelLighting.glsl", "fsPerPixelLighting.glsl");
 #endif
 #endif  
 
-	// Create and initialize a buffer object ，將此部分的設定移入 SetShader 中
+	// Create and initialize a buffer object ，將此部分的設定移入 setShader 中
 	// CreateBufferObject();
 
 	// 設定材質
-	SetMaterials(vec4(0), vec4(0.5f, 0.5f, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	SetKaKdKsShini(0, 0.8f, 0.2f, 1);
+	setMaterials(vec4(0), vec4(0.5f, 0.5f, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	setKaKdKsShini(0, 0.8f, 0.2f, 1);
 }
 
 // 回家自己寫
@@ -208,18 +208,18 @@ void CWireSphere::Update(float dt)
 }
 
 
-void CWireSphere::Draw()
+void CWireSphere::draw()
 {
-	DrawingSetShader();
+	drawingsetShader();
 	for (int i = 0; i < m_iStacks; i++ ) {  
 		glDrawArrays( GL_LINE_LOOP, i*(2*(m_iSlices+1)), 2*(m_iSlices+1) );
 	}
 }
 
 
-void CWireSphere::DrawW()
+void CWireSphere::drawW()
 {
-	DrawingWithoutSetShader();
+	drawingWithoutsetShader();
 	for (int i = 0; i < m_iStacks; i++ ) {  
 		glDrawArrays( GL_LINE_LOOP, i*(2*(m_iSlices+1)), 2*(m_iSlices+1) );
 	}

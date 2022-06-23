@@ -92,42 +92,42 @@ protected:
 
 	// For Shading Mode
 	// 0: Flat shading, 1: Gouraud shading, 0 for default
-	// 要變更上色模式，利用 SetShadingMode 來改變
+	// 要變更上色模式，利用 setShadingMode 來改變
 	int m_iMode;		
 
 	void		CreateBufferObject();
-	void		DrawingSetShader();
-	void		DrawingWithoutSetShader();
+	void		drawingsetShader();
+	void		drawingWithoutsetShader();
 
 public:
 	CShape();
 	virtual ~CShape();
-	virtual void Draw() = 0;
-	virtual void DrawW() = 0; // Drawing without setting shaders
+	virtual void draw() = 0;
+	virtual void drawW() = 0; // drawing without setting shaders
 	virtual void Update(float dt, point4 vLightPos, color4 vLightI) = 0;
 	virtual	void Update(float dt, const LightSource &Lights) = 0;
 	virtual void Update(float dt) = 0;
 
-	void SetShaderName(const char vxShader[], const char fsShader[]);
-	void SetShader(GLuint uiShaderHandle = MAX_UNSIGNED_INT);
-	void SetColor(vec4 vColor);
-	void SetColor(vec4 vColor,vec4 vColor2);
+	void setShaderName(const char vxShader[], const char fsShader[]);
+	void setShader(GLuint uiShaderHandle = MAX_UNSIGNED_INT);
+	void setColor(vec4 vColor);
+	void setColor(vec4 vColor,vec4 vColor2);
 
-	void SetViewMatrix(mat4 &mat);
-	void SetProjectionMatrix(mat4 &mat);
-	void SetTRSMatrix(mat4 &mat);
+	void setViewMatrix(mat4 &mat);
+	void setProjectionMatrix(mat4 &mat);
+	void setTRSMatrix(mat4 &mat);
 
 	// For setting materials 
-	void SetMaterials(color4 ambient, color4 diffuse, color4 specular);
-	void SetKaKdKsShini(float ka, float kd, float ks, float shininess); // ka kd ks shininess
+	void setMaterials(color4 ambient, color4 diffuse, color4 specular);
+	void setKaKdKsShini(float ka, float kd, float ks, float shininess); // ka kd ks shininess
 
 	// For Lighting Calculation
-	void SetShadingMode(int iMode) {m_iMode = iMode;}
+	void setShadingMode(int iMode) {m_iMode = iMode;}
 	vec4 PhongReflectionModel(vec4 vPoint, vec3 vNormal, vec4 vLightPos, color4 vLightI);
 	vec4 PhongReflectionModel(vec4 vPoint, vec3 vNormal, const LightSource &Lights);
 
 #ifdef LIGHTING_WITHGPU
-	void SetLightingDisable() {m_iLighting = 0;}
+	void setLightingDisable() {m_iLighting = 0;}
 #endif
 
 };

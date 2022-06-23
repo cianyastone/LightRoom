@@ -23,8 +23,8 @@ C2DSprite::C2DSprite()
 	m_pNormals[4] = vec3(0, 0, 1.0f);
 	m_pNormals[5] = vec3(0, 0, 1.0f);
 
-	// Set shader's name
-	SetShaderName("vsVtxNormal.glsl", "fsVtxNormal.glsl");
+	// set shader's name
+	setShaderName("vsVtxNormal.glsl", "fsVtxNormal.glsl");
 
 	// Create and initialize a buffer object 
 	CreateBufferObject();
@@ -49,7 +49,7 @@ void C2DSprite::Update(float dt)
 {
 }
 
-void C2DSprite::SetTRSMatrix(mat4 &mat)
+void C2DSprite::setTRSMatrix(mat4 &mat)
 {
 	m_mxTRS = mat;
 	m_bTRSUpdated = true;
@@ -65,32 +65,32 @@ bool C2DSprite::OnTouches(const vec2 &tp)
 	{
 		if ( !m_bPushed ) {
 			// 變成灰階
-			SetColor(vec4(0.5, 0.5, 0.5, 1.0f));
+			setColor(vec4(0.5, 0.5, 0.5, 1.0f));
 			m_bPushed = true;
 		}
 		else {
 			m_bPushed = false;
-			SetColor(m_DefaultColor);
+			setColor(m_DefaultColor);
 		}
 		return true;		// 傳回有點到按鈕
 	}
 	else return false;	// 傳回沒有點到按鈕
 }
 
-void C2DSprite::SetDefaultColor(vec4 vColor)
+void C2DSprite::setDefaultColor(vec4 vColor)
 {
 	m_DefaultColor = vColor;
-	SetColor(vColor);
+	setColor(vColor);
 }
 
-void C2DSprite::Draw()
+void C2DSprite::draw()
 {
-	DrawingSetShader();
+	drawingsetShader();
 	glDrawArrays(GL_TRIANGLES, 0, QUAD_NUM);
 }
 
-void C2DSprite::DrawW()
+void C2DSprite::drawW()
 {
-	DrawingWithoutSetShader();
+	drawingWithoutsetShader();
 	glDrawArrays(GL_TRIANGLES, 0, QUAD_NUM);
 }

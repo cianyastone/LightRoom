@@ -29,8 +29,8 @@ public:
 
 	void RenderWithFlatShading(point4 vLightPos, color4 vLightI);
 	void RenderWithGouraudShading(point4 vLightPos, color4 vLightI);
-	void Draw();
-	void DrawW(); // 呼叫不再次設定 Shader 的描繪方式
+	void draw();
+	void drawW(); // 呼叫不再次設定 Shader 的描繪方式
 };
 
 #endif

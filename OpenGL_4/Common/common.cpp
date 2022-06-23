@@ -23,7 +23,7 @@ unsigned int g_iScore;
 extern char g_strScore[] = "0000000";
 */
 
-void DrawText(float x, float y, char *string)
+void drawText(float x, float y, char *string)
 {
 	int len, i;
 	glRasterPos2f(x, y);
@@ -47,7 +47,7 @@ void DisplayFSP(int ifps)
 	g_strFPS[6] = ifps/10+48;
 	g_strFPS[7] = ifps%10+48;
 //	glColor3f(0.5, 0.8, 0.5);
-	DrawText(0, ORTHO_WIDTH, g_strFPS);	// 在指定的位置處，顯示指定的字串內容
+	drawText(0, ORTHO_WIDTH, g_strFPS);	// 在指定的位置處，顯示指定的字串內容
 }
 
 //void DisplayScore(unsigned int iScore)
@@ -61,7 +61,7 @@ void DisplayFSP(int ifps)
 //		t = t / 10;
 //	}
 //	glColor3f(0.91, 0.15, 0.3);
-//	DrawText(32, ORTHO_WIDTH-3, g_strScore);
+//	drawText(32, ORTHO_WIDTH-3, g_strScore);
 //}
 
 

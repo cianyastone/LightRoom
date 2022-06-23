@@ -32,22 +32,22 @@ CSolidCube::CSolidCube()
 	for( int i = 0 ; i < m_iNumVtx ; i++ ) m_pColors[i] = vec4(-1.0f,-1.0f,-1.0f,1.0f);
 
 #ifdef LIGHTING_WITHCPU
-	// Default Set shader's name
-	SetShaderName("vsLighting_CPU.glsl", "fsLighting_CPU.glsl");
+	// Default set shader's name
+	setShaderName("vsLighting_CPU.glsl", "fsLighting_CPU.glsl");
 #else // lighting with GPU
 #ifdef PERVERTEX_LIGHTING
-	SetShaderName("vsLighting_GPU.glsl", "fsLighting_GPU.glsl");
+	setShaderName("vsLighting_GPU.glsl", "fsLighting_GPU.glsl");
 #else
-	SetShaderName("vsPerPixelLighting.glsl", "fsPerPixelLighting.glsl");
+	setShaderName("vsPerPixelLighting.glsl", "fsPerPixelLighting.glsl");
 #endif
 #endif  
 
-	// Create and initialize a buffer object ，將此部分的設定移入 SetShader 中
+	// Create and initialize a buffer object ，將此部分的設定移入 setShader 中
 //	CreateBufferObject();
 
 	// 設定材質
-	SetMaterials(vec4(0), vec4(0.5f, 0.5f, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	SetKaKdKsShini(0, 0.8f, 0.2f, 1);
+	setMaterials(vec4(0), vec4(0.5f, 0.5f, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	setKaKdKsShini(0, 0.8f, 0.2f, 1);
 }
 
 void CSolidCube::Quad( int a, int b, int c, int d )
@@ -66,18 +66,18 @@ void CSolidCube::Quad( int a, int b, int c, int d )
     m_pNormals[m_iIndex] = normal; m_pPoints[m_iIndex] = m_vertices[d]; m_iIndex++;
 }
 
-void CSolidCube::Draw()
+void CSolidCube::draw()
 {
 //	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // Change to wireframe mode
-	DrawingSetShader();
+	drawingsetShader();
 	glDrawArrays( GL_TRIANGLES, 0, SOLIDCUBE_NUM );
 //	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); // Return to solid mode
 }
 
 
-void CSolidCube::DrawW()
+void CSolidCube::drawW()
 {
-	DrawingWithoutSetShader();
+	drawingWithoutsetShader();
 	glDrawArrays( GL_TRIANGLES, 0, SOLIDCUBE_NUM );
 }
 

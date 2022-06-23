@@ -20,16 +20,16 @@ public:
 	vec4  m_DefaultColor;
 	bool  m_bPushed;
 
-	void SetTRSMatrix(mat4 &mat);
+	void setTRSMatrix(mat4 &mat);
 	void Update(float dt);
-	void SetDefaultColor(vec4 vColor);
+	void setDefaultColor(vec4 vColor);
 	bool getButtonStatus(){ return m_bPushed; }
 	bool OnTouches(const vec2 &tp);
 
 	GLuint GetShaderHandle() { return m_uiProgram; }
 
-	void Draw();
-	void DrawW();
+	void draw();
+	void drawW();
 };
 
 

@@ -33,7 +33,7 @@ void CLineSegment::CreateBufferObject()
 	glBufferSubData( GL_ARRAY_BUFFER, sizeof(m_Points), sizeof(m_Colors), m_Colors );
 }
 
-void CLineSegment::SetShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderHandle)
+void CLineSegment::setShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderHandle)
 {
     // Load shaders and use the resulting shader program
 	if( uiShaderHandle == MAX_UNSIGNED_INT) m_uiProgram = InitShader("vsVtxColor.glsl", "fsVtxColor.glsl");
@@ -58,7 +58,7 @@ void CLineSegment::SetShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiSha
 	glBindBuffer( GL_ARRAY_BUFFER, 0 );
 }
 
-void CLineSegment::SetShader(GLuint uiShaderHandle)
+void CLineSegment::setShader(GLuint uiShaderHandle)
 {
 	// Load shaders and use the resulting shader program
 	if (uiShaderHandle == MAX_UNSIGNED_INT) m_uiProgram = InitShader("vsVtxColor.glsl", "fsVtxColor.glsl");
@@ -91,32 +91,32 @@ void CLineSegment::UpdatePosition(vec4 SPoint, vec4 EPoint)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void CLineSegment::SetViewMatrix(mat4 &mat)
+void CLineSegment::setViewMatrix(mat4 &mat)
 {
 	m_mxView = mat;
 	m_bUpdateView = true;
 }
 
-void CLineSegment::SetProjectionMatrix(mat4 &mat)
+void CLineSegment::setProjectionMatrix(mat4 &mat)
 {
 	m_mxProjection = mat;
 	m_bUpdateProj = true;
 }
 
-void CLineSegment::SetTRSMatrix(mat4 &mat)
+void CLineSegment::setTRSMatrix(mat4 &mat)
 {
 	m_mxTRS = mat;
 	m_bUpdateView = true;
 }
 
-void CLineSegment::SetColor(vec4 vColor)
+void CLineSegment::setColor(vec4 vColor)
 {
 	m_Colors[0] = m_Colors[1] = vColor;
 	glBindBuffer( GL_ARRAY_BUFFER, m_uiBuffer );
 	glBufferSubData( GL_ARRAY_BUFFER, sizeof(m_Points), sizeof(m_Colors), m_Colors );
 }
 
-void CLineSegment::SetVtxColors(vec4 SPColor, vec4 EPColor)
+void CLineSegment::setVtxColors(vec4 SPColor, vec4 EPColor)
 {
 	m_Colors[0] = SPColor;
 	m_Colors[1] = EPColor;
@@ -124,7 +124,7 @@ void CLineSegment::SetVtxColors(vec4 SPColor, vec4 EPColor)
 	glBufferSubData( GL_ARRAY_BUFFER, sizeof(m_Points), sizeof(m_Colors), m_Colors );
 }
 
-void CLineSegment::Draw()
+void CLineSegment::draw()
 {
 	glUseProgram( m_uiProgram );
 	glBindVertexArray( m_uiVao );
@@ -141,7 +141,7 @@ void CLineSegment::Draw()
 	glDrawArrays( GL_LINES, 0, VERTEX_NUM );
 }
 
-void CLineSegment::DrawW()
+void CLineSegment::drawW()
 {
 	glBindVertexArray( m_uiVao );
 	if( m_bUpdateView ) {

@@ -20,20 +20,20 @@ public:
 	CChecker(int iSize = 6, float fYPos = 0.0f); // 預設為 6 X 6 方格, 每一個方格邊長都是 1
 	~CChecker();
 
-	void SetShader();
-	void SetProjectionMatrix(mat4 &mat);
-	void SetViewMatrix(mat4 &mat);
-	void SetTRSMatrix(mat4 &mat);
-	void SetShadingMode(int iMode);
+	void setShader();
+	void setProjectionMatrix(mat4 &mat);
+	void setViewMatrix(mat4 &mat);
+	void setTRSMatrix(mat4 &mat);
+	void setShadingMode(int iMode);
 	void Update(float dt, point4 vLightPos, color4 vLightI);
 	void Update(float dt,const LightSource &Lights);
 	void Update(float dt, const LightSource &Lights, const LightSource &Lights2);
 	void Update(float dt, const LightSource &Lights, const LightSource &Lights2, const LightSource &Lights3, const LightSource &Lights4);
-	void Draw();
+	void draw();
 
 	// For setting materials 
-	void SetMaterials(color4 ambient, color4 diffuse, color4 specular);
-	void SetKaKdKsShini(float ka, float kd, float ks, float shininess); // ka kd ks shininess
+	void setMaterials(color4 ambient, color4 diffuse, color4 specular);
+	void setKaKdKsShini(float ka, float kd, float ks, float shininess); // ka kd ks shininess
 };
 
 #endif

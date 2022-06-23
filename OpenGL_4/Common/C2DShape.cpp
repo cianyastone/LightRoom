@@ -36,7 +36,7 @@ void C2DShape::CreateBufferObject()
 	glBufferSubData(GL_ARRAY_BUFFER, sizeof(vec4)*m_iNumVtx, sizeof(vec3)*m_iNumVtx, m_pNormals);
 }
 
-void C2DShape::SetShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderHandle)
+void C2DShape::setShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderHandle)
 {
 	// Load shaders and use the resulting shader program
 	if (uiShaderHandle == MAX_UNSIGNED_INT) m_uiProgram = InitShader(m_pVXshader, m_pFSshader);
@@ -65,7 +65,7 @@ void C2DShape::SetShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderH
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void C2DShape::SetShader(GLuint uiShaderHandle)
+void C2DShape::setShader(GLuint uiShaderHandle)
 {
 	// Load shaders and use the resulting shader program
 	if (uiShaderHandle == MAX_UNSIGNED_INT) m_uiProgram = InitShader(m_pVXshader, m_pFSshader);
@@ -94,7 +94,7 @@ void C2DShape::SetShader(GLuint uiShaderHandle)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void C2DShape::DrawingSetShader()
+void C2DShape::drawingsetShader()
 {
 	glUseProgram(m_uiProgram);
 	glBindVertexArray(m_uiVao);
@@ -116,7 +116,7 @@ void C2DShape::DrawingSetShader()
 }
 
 // 此處預設使用前一個描繪物件所使用的 Shader
-void C2DShape::DrawingWithoutSetShader()
+void C2DShape::drawingWithoutsetShader()
 {
 	glBindVertexArray(m_uiVao);
 	if (m_bViewUpdated || m_bTRSUpdated) { // Model View 的相關矩陣內容有更動
@@ -131,7 +131,7 @@ void C2DShape::DrawingWithoutSetShader()
 	glUniform4fv(m_uiColor, 1, m_fColor);
 }
 
-void C2DShape::SetShaderName(const char vxShader[], const char fsShader[])
+void C2DShape::setShaderName(const char vxShader[], const char fsShader[])
 {
 	int len;
 	len = strlen(vxShader);
@@ -143,24 +143,24 @@ void C2DShape::SetShaderName(const char vxShader[], const char fsShader[])
 	memcpy(m_pFSshader, fsShader, len + 1);
 }
 
-void C2DShape::SetViewMatrix(mat4 &mat)
+void C2DShape::setViewMatrix(mat4 &mat)
 {
 	m_mxView = mat;
 	m_bViewUpdated = true;
 }
 
-void C2DShape::SetProjectionMatrix(mat4 &mat)
+void C2DShape::setProjectionMatrix(mat4 &mat)
 {
 	m_mxProjection = mat;
 	m_bProjUpdated = true;
 }
-void C2DShape::SetTRSMatrix(mat4 &mat)
+void C2DShape::setTRSMatrix(mat4 &mat)
 {
 	m_mxTRS = mat;
 	m_bTRSUpdated = true;
 }
 
-void C2DShape::SetColor(vec4 vColor)
+void C2DShape::setColor(vec4 vColor)
 {
 	m_fColor[0] = vColor.x;
 	m_fColor[1] = vColor.y;

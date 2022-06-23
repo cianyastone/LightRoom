@@ -30,8 +30,8 @@ public:
 	void RenderWithGouraudShading(point4 vLightPos, color4 vLightI);
 	void RenderWithFlatShading(const LightSource &Lights);
 	void RenderWithGouraudShading(const LightSource &Lights);
-	void Draw();
-	void DrawW();
+	void draw();
+	void drawW();
 
 	//	讀檔
 	char lineHeader[1000];//一行讀檔暫存空間

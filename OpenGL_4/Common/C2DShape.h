@@ -32,23 +32,23 @@ protected:
 	bool    m_bColorUpdated;
 
 	void		CreateBufferObject();
-	void		DrawingSetShader();
-	void		DrawingWithoutSetShader();
+	void		drawingsetShader();
+	void		drawingWithoutsetShader();
 
 public:
 	C2DShape();
 	virtual ~C2DShape();
-	virtual void Draw() = 0;
-	virtual void DrawW() = 0; // Drawing without setting shaders
+	virtual void draw() = 0;
+	virtual void drawW() = 0; // drawing without setting shaders
 	virtual void Update(float dt) = 0;	// 提供讓每一個 frame 都可以對幾何模型改變內容
 
-	void SetShaderName(const char vxShader[], const char fsShader[]);
-	void SetShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderHandle = MAX_UNSIGNED_INT);
-	void SetShader(GLuint uiShaderHandle = MAX_UNSIGNED_INT);
-	void SetColor(vec4 vColor);
-	void SetViewMatrix(mat4 &mat);
-	void SetProjectionMatrix(mat4 &mat);
-	void SetTRSMatrix(mat4 &mat);
+	void setShaderName(const char vxShader[], const char fsShader[]);
+	void setShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderHandle = MAX_UNSIGNED_INT);
+	void setShader(GLuint uiShaderHandle = MAX_UNSIGNED_INT);
+	void setColor(vec4 vColor);
+	void setViewMatrix(mat4 &mat);
+	void setProjectionMatrix(mat4 &mat);
+	void setTRSMatrix(mat4 &mat);
 };
 
 #endif

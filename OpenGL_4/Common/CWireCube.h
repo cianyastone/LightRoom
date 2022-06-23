@@ -24,8 +24,8 @@ public:
 	void Update(float dt); // 不計算光源的照明
 	void RenderWithFlatShading(point4 vLightPos, color4 vLightI);
 	void RenderWithGouraudShading(point4 vLightPos, color4 vLightI);
-	void Draw();
-	void DrawW();
+	void draw();
+	void drawW();
 };
 
 #endif

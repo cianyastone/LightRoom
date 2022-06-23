@@ -188,197 +188,196 @@ void init( void )
 	g_pChecker = new CChecker(GRID_SIZE);
 // Part 3 : materials
 #ifdef SETTING_MATERIALS
-	g_pChecker->SetMaterials(vec4(0.15f,0.15f,0.15f,1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_pChecker->	SetKaKdKsShini(0, 0.8f, 0.5f, 1);
+	g_pChecker->setMaterials(vec4(0.15f,0.15f,0.15f,1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_pChecker->	setKaKdKsShini(0, 0.8f, 0.5f, 1);
 #endif
-	g_pChecker->SetShadingMode(GOURAUD_SHADING);
-	g_pChecker->SetShader();
+	g_pChecker->setShadingMode(GOURAUD_SHADING);
+	g_pChecker->setShader();
 
 	vT.x = -10.0f; vT.y = 10.0f; vT.z = 0;
 	mxT = Translate(vT);
 	g_LeftWall = new CQuad;
-	g_LeftWall->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_LeftWall->SetShadingMode(GOURAUD_SHADING);
-	g_LeftWall->SetShader();
-	g_LeftWall->SetColor(vec4(0.6f));
-	g_LeftWall->SetTRSMatrix(mxT*RotateZ(-90.0f)*Scale(20.0f, 1, 20.0f));
-	g_LeftWall->SetKaKdKsShini(0, 0.8f, 0.5f, 1);
+	g_LeftWall->setMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_LeftWall->setShadingMode(GOURAUD_SHADING);
+	g_LeftWall->setShader();
+	g_LeftWall->setColor(vec4(0.6f));
+	g_LeftWall->setTRSMatrix(mxT*RotateZ(-90.0f)*Scale(20.0f, 1, 20.0f));
+	g_LeftWall->setKaKdKsShini(0, 0.8f, 0.5f, 1);
 
 	vT.x = 10.0f; vT.y = 10.0f; vT.z = 0;
 	mxT = Translate(vT);
 	g_RightWall = new CQuad;
-	g_RightWall->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_RightWall->SetShadingMode(GOURAUD_SHADING);
-	g_RightWall->SetShader();
-	g_RightWall->SetColor(vec4(0.6f));
-	g_RightWall->SetTRSMatrix(mxT*RotateZ(90.0f)*Scale(20.0f, 1, 20.0f));
-	g_RightWall->SetKaKdKsShini(0, 0.8f, 0.5f, 1);
+	g_RightWall->setMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_RightWall->setShadingMode(GOURAUD_SHADING);
+	g_RightWall->setShader();
+	g_RightWall->setColor(vec4(0.6f));
+	g_RightWall->setTRSMatrix(mxT*RotateZ(90.0f)*Scale(20.0f, 1, 20.0f));
+	g_RightWall->setKaKdKsShini(0, 0.8f, 0.5f, 1);
 
 	vT.x = 0.0f; vT.y = 10.0f; vT.z = 10.0f;
 	mxT = Translate(vT);
 	g_FrontWall = new CQuad;
-	g_FrontWall->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_FrontWall->SetShadingMode(GOURAUD_SHADING);
-	g_FrontWall->SetShader();
-	g_FrontWall->SetColor(vec4(0.6f));
-	g_FrontWall->SetTRSMatrix(mxT*RotateX(-90.0f)*Scale(20.0f, 1, 20.0f));
-	g_FrontWall->SetKaKdKsShini(0, 0.8f, 0.5f, 1);
+	g_FrontWall->setMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_FrontWall->setShadingMode(GOURAUD_SHADING);
+	g_FrontWall->setShader();
+	g_FrontWall->setColor(vec4(0.6f));
+	g_FrontWall->setTRSMatrix(mxT*RotateX(-90.0f)*Scale(20.0f, 1, 20.0f));
+	g_FrontWall->setKaKdKsShini(0, 0.8f, 0.5f, 1);
 
 	vT.x = 0.0f; vT.y = 10.0f; vT.z = -10.0f;
 	
 	mxT = Translate(vT);
 	g_BackWall = new CQuad;
-	g_BackWall->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_BackWall->SetShadingMode(GOURAUD_SHADING);
-	g_BackWall->SetShader();
-	g_BackWall->SetColor(vec4(0.6f));
-	g_BackWall->SetTRSMatrix(mxT*RotateX(90.0f)*Scale(20.0f, 1, 20.0f));
-	g_BackWall->SetKaKdKsShini(0, 0.8f, 0.5f, 1);
+	g_BackWall->setMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0, 0.85f, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_BackWall->setShadingMode(GOURAUD_SHADING);
+	g_BackWall->setShader();
+	g_BackWall->setColor(vec4(0.6f));
+	g_BackWall->setTRSMatrix(mxT*RotateX(90.0f)*Scale(20.0f, 1, 20.0f));
+	g_BackWall->setKaKdKsShini(0, 0.8f, 0.5f, 1);
 
 //OBJ1
 	g_pObj1 = new CObj("./Common/Well.obj");
-	g_pObj1->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.85f, 0.8, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_pObj1->SetKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
+	g_pObj1->setMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.85f, 0.8, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_pObj1->setKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
 
-	g_pObj1->SetShader();
+	g_pObj1->setShader();
 	vT.x = -5.5; vT.y = 2.5; vT.z = 1;
 	vS.x = 1;	vS.y =1;	vS.z = 1;
 	mxS = Scale(vS);
 	mxT = Translate(vT);
-	g_pObj1->SetTRSMatrix(mxT*mxS);
-	g_pObj1->SetShadingMode(GOURAUD_SHADING);
+	g_pObj1->setTRSMatrix(mxT*mxS);
+	g_pObj1->setShadingMode(GOURAUD_SHADING);
 
-	g_pObj2 = new CObj("./Common/Well.obj");
-	g_pObj2->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.55f, 0.3, 0.2, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_pObj2->SetKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
-	g_pObj2->SetShader();
+	g_pObj2 = new CObj("./Common/Donut.obj");
+	g_pObj2->setMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.55f, 0.3, 0.2, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_pObj2->setKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
+	g_pObj2->setShader();
 	vT.x = 0; vT.y = 0.5; vT.z =0;
-	vS.x = 1;	vS.y = 1;	vS.z = 1;
+	vS.x = 20;	vS.y = 20;	vS.z = 20;
 	mxS = Scale(vS);
 	mxT = Translate(vT);
-	g_pObj2->SetTRSMatrix(mxT*mxS);
-	g_pObj2->SetShadingMode(GOURAUD_SHADING);
+	g_pObj2->setTRSMatrix(mxT*mxS);
+	g_pObj2->setShadingMode(GOURAUD_SHADING);
 
 	g_pObj3 = new CObj("./Common/Well.obj");
-	g_pObj3->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.95f, 0.3, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_pObj3->SetKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
-
-	g_pObj3->SetShader();
+	g_pObj3->setMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.95f, 0.3, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_pObj3->setKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
+	g_pObj3->setShader();
 	vT.x = -0.5; vT.y = 0.5; vT.z = -5.5;
 	vS.x = 1;	vS.y = 1;	vS.z = 1;
 	mxS = Scale(vS);
 	mxT = Translate(vT);
-	g_pObj3->SetTRSMatrix(mxT*mxS);
-	g_pObj3->SetShadingMode(GOURAUD_SHADING);
-	g_pObj4 = new CObj("./Common/Well.obj");
-	g_pObj4->SetMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.85f, 0.8f, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_pObj4->SetKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
+	g_pObj3->setTRSMatrix(mxT*mxS);
+	g_pObj3->setShadingMode(GOURAUD_SHADING);
 
-	g_pObj4->SetShader();
+	g_pObj4 = new CObj("./Common/Well.obj");
+	g_pObj4->setMaterials(vec4(0.15f, 0.15f, 0.15f, 1.0f), vec4(0.85f, 0.8f, 0.5f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_pObj4->setKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
+	g_pObj4->setShader();
 	vT.x = 5.5; vT.y = 1.0; vT.z = 3.5;
 	vS.x = 1;	vS.y = 1;	vS.z = 1;
 	mxS = Scale(vS);
 	mxT = Translate(vT);
-	g_pObj4->SetTRSMatrix(mxT*mxS);
-	g_pObj4->SetShadingMode(GOURAUD_SHADING);
+	g_pObj4->setTRSMatrix(mxT*mxS);
+	g_pObj4->setShadingMode(GOURAUD_SHADING);
 
 	g_pCube = new CSolidCube;
 // Part 3 : materials
 #ifdef SETTING_MATERIALS
-	g_pCube->SetMaterials(vec4(0.15f,0.15f,0.15f,1.0f), vec4(0.85f, 0, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_pCube->SetKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
+	g_pCube->setMaterials(vec4(0.15f,0.15f,0.15f,1.0f), vec4(0.85f, 0, 0, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_pCube->setKaKdKsShini(0.15f, 0.8f, 0.2f, 2);
 #endif
-	g_pCube->SetShader();
+	g_pCube->setShader();
 	// 設定 Cube
 	vT.x = -0.5; vT.y = 0.5; vT.z = -5.5;
 	mxT = Translate(vT);
-	g_pCube->SetTRSMatrix(mxT);
-	g_pCube->SetShadingMode(GOURAUD_SHADING);
+	g_pCube->setTRSMatrix(mxT);
+	g_pCube->setShadingMode(GOURAUD_SHADING);
 
 	g_pSphere = new CSolidSphere(1, 16, 16);
 // Part 3 : materials
 #ifdef SETTING_MATERIALS
-	g_pSphere->SetMaterials(vec4(0.15f,0.15f,0.15f,1.0f), vec4(0, 0, 0.85f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	g_pSphere->SetKaKdKsShini(0.15f, 0.45f, 0.55f, 5);
+	g_pSphere->setMaterials(vec4(0.15f,0.15f,0.15f,1.0f), vec4(0, 0, 0.85f, 1), vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	g_pSphere->setKaKdKsShini(0.15f, 0.45f, 0.55f, 5);
 #endif
-	g_pSphere->SetShader();
+	g_pSphere->setShader();
 	// 設定 Sphere
 	vT.x = 5.5; vT.y = 1.0; vT.z = 3.5;
 	mxT = Translate(vT);
-	g_pSphere->SetTRSMatrix(mxT);
-	g_pSphere->SetShadingMode(GOURAUD_SHADING);
+	g_pSphere->setTRSMatrix(mxT);
+	g_pSphere->setShadingMode(GOURAUD_SHADING);
 
 	// 設定 代表 Light 的 WireSphere
 	g_pLight = new CWireSphere(0.25f, 6, 3);
-	g_pLight->SetShader();
+	g_pLight->setShader();
 	mxT = Translate(g_Light1.position);
-	g_pLight->SetTRSMatrix(mxT);
-	g_pLight->SetColor(g_Light1.diffuse);
+	g_pLight->setTRSMatrix(mxT);
+	g_pLight->setColor(g_Light1.diffuse);
 #ifdef LIGHTING_WITHGPU
-	g_pLight->SetLightingDisable();
+	g_pLight->setLightingDisable();
 #endif
 	//spotlight
 	g_pSpotLight1 = new CWireSphere(0,0,0);
-	g_pSpotLight1->SetShader();
+	g_pSpotLight1->setShader();
 	mxT = Translate(g_spotLight1.position);
-	g_pSpotLight1->SetTRSMatrix(mxT);
-	g_pSpotLight1->SetColor(g_fSpotLightI);
+	g_pSpotLight1->setTRSMatrix(mxT);
+	g_pSpotLight1->setColor(g_fSpotLightI);
 	g_spotLight1.UpdateDirection();
 
 	g_LightLine = new CLineSegment(g_spotLight1.position, g_spotLight1.spotTarget, vec4(1, 0, 0, 1));
-	g_LightLine->SetShader();
+	g_LightLine->setShader();
 	//spotlight2
 	g_pSpotLight2 = new CWireSphere(0, 0, 0);
-	g_pSpotLight2->SetShader();
+	g_pSpotLight2->setShader();
 	mxT = Translate(g_spotLight2.position);
-	g_pSpotLight2->SetTRSMatrix(mxT);
-	g_pSpotLight2->SetColor(g_fSpotLightI2);
+	g_pSpotLight2->setTRSMatrix(mxT);
+	g_pSpotLight2->setColor(g_fSpotLightI2);
 	g_spotLight2.UpdateDirection();
 
 	g_LightLine2 = new CLineSegment(g_spotLight2.position, g_spotLight2.spotTarget, vec4(1, 0, 0, 1));
-	g_LightLine2->SetShader();
+	g_LightLine2->setShader();
 	//spotlight3
 	g_pSpotLight3 = new CWireSphere(0, 0, 0);
-	g_pSpotLight3->SetShader();
+	g_pSpotLight3->setShader();
 	mxT = Translate(g_spotLight3.position);
-	g_pSpotLight3->SetTRSMatrix(mxT);
-	g_pSpotLight3->SetColor(g_fSpotLightI3);
+	g_pSpotLight3->setTRSMatrix(mxT);
+	g_pSpotLight3->setColor(g_fSpotLightI3);
 	g_spotLight3.UpdateDirection();
 
 	g_LightLine3 = new CLineSegment(g_spotLight3.position, g_spotLight3.spotTarget, vec4(1, 0, 0, 1));
-	g_LightLine3->SetShader();
+	g_LightLine3->setShader();
 	//2D ui
 	// 以下為利用平行投影產生 2D 的介面
 	// 範圍在 X/Y 平面的  -1 到 1 之間，介面都放在 Z = 0 
 
-	g_p2DBtn[0] = new C2DSprite; g_p2DBtn[0]->SetShader();
-	vColor.x = 1; vColor.y = 0; vColor.z = 0; g_p2DBtn[0]->SetDefaultColor(vColor);
+	g_p2DBtn[0] = new C2DSprite; g_p2DBtn[0]->setShader();
+	vColor.x = 1; vColor.y = 0; vColor.z = 0; g_p2DBtn[0]->setDefaultColor(vColor);
 	mxS = Scale(0.1f, 0.1f, 1.0f);
 	mxT = Translate(0.60f, -0.90f, 0);
-	g_p2DBtn[0]->SetTRSMatrix(mxT*mxS);
-	g_p2DBtn[0]->SetViewMatrix(g_2DView);
-	g_p2DBtn[0]->SetViewMatrix(g_2DProj);
+	g_p2DBtn[0]->setTRSMatrix(mxT*mxS);
+	g_p2DBtn[0]->setViewMatrix(g_2DView);
+	g_p2DBtn[0]->setViewMatrix(g_2DProj);
 
-	g_p2DBtn[1] = new C2DSprite; g_p2DBtn[1]->SetShader();
-	vColor.x = 0; vColor.y = 1; vColor.z = 0; g_p2DBtn[1]->SetDefaultColor(vColor);
+	g_p2DBtn[1] = new C2DSprite; g_p2DBtn[1]->setShader();
+	vColor.x = 0; vColor.y = 1; vColor.z = 0; g_p2DBtn[1]->setDefaultColor(vColor);
 	mxT = Translate(0.90f, -0.90f, 0);
-	g_p2DBtn[1]->SetTRSMatrix(mxT*mxS);
-	g_p2DBtn[1]->SetViewMatrix(g_2DView);
-	g_p2DBtn[1]->SetViewMatrix(g_2DProj);
+	g_p2DBtn[1]->setTRSMatrix(mxT*mxS);
+	g_p2DBtn[1]->setViewMatrix(g_2DView);
+	g_p2DBtn[1]->setViewMatrix(g_2DProj);
 
-	g_p2DBtn[2] = new C2DSprite; g_p2DBtn[2]->SetShader();
-	vColor.x = 0; vColor.y = 0; vColor.z = 1; g_p2DBtn[2]->SetDefaultColor(vColor);
+	g_p2DBtn[2] = new C2DSprite; g_p2DBtn[2]->setShader();
+	vColor.x = 0; vColor.y = 0; vColor.z = 1; g_p2DBtn[2]->setDefaultColor(vColor);
 	mxT = Translate(0.75f, -0.90f, 0);
-	g_p2DBtn[2]->SetTRSMatrix(mxT*mxS);
-	g_p2DBtn[2]->SetViewMatrix(g_2DView);
-	g_p2DBtn[2]->SetViewMatrix(g_2DProj);
+	g_p2DBtn[2]->setTRSMatrix(mxT*mxS);
+	g_p2DBtn[2]->setViewMatrix(g_2DView);
+	g_p2DBtn[2]->setViewMatrix(g_2DProj);
 
-	g_p2DBtn[3] = new C2DSprite; g_p2DBtn[3]->SetShader();
-	vColor.x = 1; vColor.y = 1; vColor.z = 1; g_p2DBtn[3]->SetDefaultColor(vColor);
+	g_p2DBtn[3] = new C2DSprite; g_p2DBtn[3]->setShader();
+	vColor.x = 1; vColor.y = 1; vColor.z = 1; g_p2DBtn[3]->setDefaultColor(vColor);
 	mxT = Translate(0.45f, -0.90f, 0);
-	g_p2DBtn[3]->SetTRSMatrix(mxT*mxS);
-	g_p2DBtn[3]->SetViewMatrix(g_2DView);
-	g_p2DBtn[3]->SetViewMatrix(g_2DProj);
+	g_p2DBtn[3]->setTRSMatrix(mxT*mxS);
+	g_p2DBtn[3]->setViewMatrix(g_2DView);
+	g_p2DBtn[3]->setViewMatrix(g_2DProj);
 
 	//-------------------------------------------------------------
 	
@@ -387,25 +386,25 @@ void init( void )
 	// 就不寫在 OnFrameMove 中每次都 Check
 	bool bPDirty;
 	mat4 mpx = camera->getProjectionMatrix(bPDirty);
-	g_pChecker->SetProjectionMatrix(mpx);
-	g_pCube->SetProjectionMatrix(mpx);
-	g_pSphere->SetProjectionMatrix(mpx);
-	g_pLight->SetProjectionMatrix(mpx);
-	g_LeftWall->SetProjectionMatrix(mpx);
-	g_RightWall->SetProjectionMatrix(mpx);
-	g_FrontWall->SetProjectionMatrix(mpx);
-	g_BackWall->SetProjectionMatrix(mpx);
-	g_pObj1->SetProjectionMatrix(mpx);
-	g_pObj2->SetProjectionMatrix(mpx);
-	g_pObj3->SetProjectionMatrix(mpx);
-	g_pObj4->SetProjectionMatrix(mpx);
+	g_pChecker->setProjectionMatrix(mpx);
+	g_pCube->setProjectionMatrix(mpx);
+	g_pSphere->setProjectionMatrix(mpx);
+	g_pLight->setProjectionMatrix(mpx);
+	g_LeftWall->setProjectionMatrix(mpx);
+	g_RightWall->setProjectionMatrix(mpx);
+	g_FrontWall->setProjectionMatrix(mpx);
+	g_BackWall->setProjectionMatrix(mpx);
+	g_pObj1->setProjectionMatrix(mpx);
+	g_pObj2->setProjectionMatrix(mpx);
+	g_pObj3->setProjectionMatrix(mpx);
+	g_pObj4->setProjectionMatrix(mpx);
 
-	g_pSpotLight1->SetProjectionMatrix(mpx);
-	g_LightLine->SetProjectionMatrix(mpx);
-	g_pSpotLight2->SetProjectionMatrix(mpx);
-	g_LightLine2->SetProjectionMatrix(mpx);
-	g_pSpotLight3->SetProjectionMatrix(mpx);
-	g_LightLine3->SetProjectionMatrix(mpx);
+	g_pSpotLight1->setProjectionMatrix(mpx);
+	g_LightLine->setProjectionMatrix(mpx);
+	g_pSpotLight2->setProjectionMatrix(mpx);
+	g_LightLine2->setProjectionMatrix(mpx);
+	g_pSpotLight3->setProjectionMatrix(mpx);
+	g_LightLine3->setProjectionMatrix(mpx);
 }
 
 //----------------------------------------------------------------------------
@@ -413,24 +412,21 @@ void GL_Display( void )
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // clear the window
 
-	g_pChecker->Draw();
-	g_pLight->Draw();
-	g_LeftWall->Draw();
-	g_RightWall->Draw();
-	g_FrontWall->Draw();
-	g_BackWall->Draw();
-	g_pObj1->Draw();
-	g_pObj2->Draw();
-	g_pObj3->Draw();
-	g_pObj4->Draw();
+	g_pChecker->draw();
+	g_pLight->draw();
+	g_LeftWall->draw();
+	g_RightWall->draw();
+	g_FrontWall->draw();
+	g_BackWall->draw();
+	g_pObj1->draw();
+	g_pObj2->draw();
+	g_pCube->draw();
+	g_pSphere->draw();
 
-	g_pSpotLight1->Draw();
-	//g_LightLine->Draw();
-	g_pSpotLight2->Draw();
-	//g_LightLine2->Draw();
-	g_pSpotLight3->Draw();
-	//g_LightLine3->Draw();
-	for (int i = 0; i < 4; i++) g_p2DBtn[i]->Draw();
+	g_pSpotLight1->draw();
+	g_pSpotLight2->draw();
+	g_pSpotLight3->draw();
+	for (int i = 0; i < 4; i++) g_p2DBtn[i]->draw();
 	glutSwapBuffers();	// 交換 Frame Buffer
 }
 
@@ -449,7 +445,7 @@ void UpdateLightPosition(float dt)
 	g_Light1.position.x = g_fLightRadius * cosf(g_fLightTheta);
 	g_Light1.position.z = g_fLightRadius * sinf(g_fLightTheta);
 	mxT = Translate(g_Light1.position);
-	g_pLight->SetTRSMatrix(mxT);
+	g_pLight->setTRSMatrix(mxT);
 
 	
 }
@@ -462,25 +458,25 @@ void onFrameMove(float delta)
 	auto camera = CCamera::getInstance();
 	mvx = camera->getViewMatrix(bVDirty);
 	if (bVDirty) {
-		g_pChecker->SetViewMatrix(mvx);
-		g_pCube->SetViewMatrix(mvx);
-		g_pSphere->SetViewMatrix(mvx);
-		g_LeftWall->SetViewMatrix(mvx);
-		g_RightWall->SetViewMatrix(mvx);
-		g_FrontWall->SetViewMatrix(mvx);
-		g_BackWall->SetViewMatrix(mvx);
-		g_pLight->SetViewMatrix(mvx);
-		g_pObj1->SetViewMatrix(mvx);
-		g_pObj2->SetViewMatrix(mvx);
-		g_pObj3->SetViewMatrix(mvx);
-		g_pObj4->SetViewMatrix(mvx);
+		g_pChecker->setViewMatrix(mvx);
+		g_pCube->setViewMatrix(mvx);
+		g_pSphere->setViewMatrix(mvx);
+		g_LeftWall->setViewMatrix(mvx);
+		g_RightWall->setViewMatrix(mvx);
+		g_FrontWall->setViewMatrix(mvx);
+		g_BackWall->setViewMatrix(mvx);
+		g_pLight->setViewMatrix(mvx);
+		g_pObj1->setViewMatrix(mvx);
+		g_pObj2->setViewMatrix(mvx);
+		g_pObj3->setViewMatrix(mvx);
+		g_pObj4->setViewMatrix(mvx);
 
-		g_pSpotLight1->SetViewMatrix(mvx);
-		g_LightLine->SetViewMatrix(mvx);
-		g_pSpotLight2->SetViewMatrix(mvx);
-		g_LightLine2->SetViewMatrix(mvx);
-		g_pSpotLight3->SetViewMatrix(mvx);
-		g_LightLine3->SetViewMatrix(mvx);
+		g_pSpotLight1->setViewMatrix(mvx);
+		g_LightLine->setViewMatrix(mvx);
+		g_pSpotLight2->setViewMatrix(mvx);
+		g_LightLine2->setViewMatrix(mvx);
+		g_pSpotLight3->setViewMatrix(mvx);
+		g_LightLine3->setViewMatrix(mvx);
 	}
 
 	if( g_bAutoRotating ) { // Part 2 : 重新計算 Light 的位置
@@ -500,8 +496,8 @@ void onFrameMove(float delta)
 	g_BackWall->Update(delta, g_Light1);
 	g_pObj2->Update(delta, g_Light1, g_spotLight1,  g_spotLight2, g_spotLight3);
 	g_pObj1->Update(delta, g_Light1,  g_spotLight1);
-	g_pObj3->Update(delta, g_Light1, g_spotLight2);
-	g_pObj4->Update(delta, g_Light1, g_spotLight3);
+	g_pCube->Update(delta, g_Light1, g_spotLight2);
+	g_pSphere->Update(delta, g_Light1, g_spotLight3);
 
 	g_pLight->Update(delta);
 
@@ -549,11 +545,11 @@ void Win_Keyboard( unsigned char key, int x, int y )
 // Part 2 : for single light source
 	case 99: // c key
 		g_bLight2On = !g_bLight2On;
-		//g_pSpotLight1->SetColor(0);
+		//g_pSpotLight1->setColor(0);
 		break;
 	case 100: // d key
 		g_bLight1On = !g_bLight1On;
-		//g_pSpotLight1->SetColor(g_fSpotLightI);
+		//g_pSpotLight1->setColor(g_fSpotLightI);
 		break;
 	case 65: // A key
 	case 97: // a key
@@ -562,37 +558,37 @@ void Win_Keyboard( unsigned char key, int x, int y )
 	case 82: // R key
 		if( g_fLightR <= 0.95f ) g_fLightR += 0.05f;
 		g_Light1.diffuse.x = g_fLightR;
-		g_pLight->SetColor(g_Light1.diffuse);
+		g_pLight->setColor(g_Light1.diffuse);
 		break;
 	case 114: // r key
 		if( g_fLightR >= 0.05f ) g_fLightR -= 0.05f;
 		g_Light1.diffuse.x = g_fLightR;
-		g_pLight->SetColor(g_Light1.diffuse);
+		g_pLight->setColor(g_Light1.diffuse);
 
 		break;
 	case 71: // G key
 		if( g_fLightG <= 0.95f ) g_fLightG += 0.05f;
 		g_Light1.diffuse.y = g_fLightG;
-		g_pLight->SetColor(g_Light1.diffuse);
+		g_pLight->setColor(g_Light1.diffuse);
 
 		break;
 	case 103: // g key
 		if( g_fLightG >= 0.05f ) g_fLightG -= 0.05f;
 		g_Light1.diffuse.y = g_fLightG;
-		g_pLight->SetColor(g_Light1.diffuse);
-		g_pSpotLight1->SetColor(g_fSpotLightI);
+		g_pLight->setColor(g_Light1.diffuse);
+		g_pSpotLight1->setColor(g_fSpotLightI);
 
 		break;
 	case 66: // B key
 		if( g_fLightB <= 0.95f ) g_fLightB += 0.05f;
 		g_Light1.diffuse.z = g_fLightB;
-		g_pLight->SetColor(g_Light1.diffuse);
+		g_pLight->setColor(g_Light1.diffuse);
 
 		break;
 	case 98: // b key
 		if( g_fLightB >= 0.05f ) g_fLightB -= 0.05f;
 		g_Light1.diffuse.z = g_fLightB;
-		g_pLight->SetColor(g_Light1.diffuse);
+		g_pLight->setColor(g_Light1.diffuse);
 
 		break;
 //----------------------------------------------------------------------------
@@ -670,8 +666,11 @@ void Win_SpecialKeyboard(int key, int x, int y) {
 			if (eye.x >= -8.0f && eye.x <= 8.0f && eye.z>=-8.0f && eye.z<=8.0f) {
 				eye = eye + cameraSpeed*normalize(vec4(at.x, 0, at.z, 0));
 			}
-			else {
-				eye = eye - 2 * cameraSpeed*normalize(vec4(at.x, 0, at.z, 0));
+			else {	// 修正卡牆
+				if (eye.x > 8.0f) eye.x = 8.0f;
+				else if (eye.x < -8.0f) eye.x = -8.0f;
+				if (eye.z > 8.0f) eye.z = 8.0f;
+				else if (eye.z < -8.0f) eye.z = -8.0f;
 			}
 			camera->updateViewLookAt(eye, eye +at);
 
@@ -681,8 +680,11 @@ void Win_SpecialKeyboard(int key, int x, int y) {
 
 				eye = eye - cameraSpeed*normalize(vec4(at.x, 0, at.z, 0));
 			}
-			else {
-				eye = eye + 2 * cameraSpeed*normalize(vec4(at.x, 0, at.z, 0));
+			else {	// 修正卡牆
+				if (eye.x > 8.0f) eye.x = 8.0f;
+				else if (eye.x < -8.0f) eye.x = -8.0f;
+				if (eye.z > 8.0f) eye.z = 8.0f;
+				else if (eye.z < -8.0f) eye.z = -8.0f;
 			}
 			camera->updateViewLookAt(eye, eye + at);
 			break;
@@ -691,9 +693,11 @@ void Win_SpecialKeyboard(int key, int x, int y) {
 
 				eye = eye + cameraSpeed*normalize(vec4(sin(g_fTheta)*sin(g_fPhi + M_PI / 2), 0, sin(g_fTheta)*cos(g_fPhi + M_PI / 2), 0));
 			}
-			else {
-				eye = eye - 2 * cameraSpeed*normalize(vec4(sin(g_fTheta)*sin(g_fPhi + M_PI / 2), 0, sin(g_fTheta)*cos(g_fPhi + M_PI / 2), 0));
-
+			else {	// 修正卡牆
+				if (eye.x > 8.0f) eye.x = 8.0f;
+				else if (eye.x < -8.0f) eye.x = -8.0f;
+				if (eye.z > 8.0f) eye.z = 8.0f;
+				else if (eye.z < -8.0f) eye.z = -8.0f;
 			}
 			camera->updateViewLookAt(eye, eye + at);
 
@@ -703,9 +707,11 @@ void Win_SpecialKeyboard(int key, int x, int y) {
 
 				eye = eye - cameraSpeed*normalize(vec4(sin(g_fTheta)*sin(g_fPhi + M_PI / 2), 0, sin(g_fTheta)*cos(g_fPhi + M_PI / 2), 0));
 			}
-			else {
-				eye = eye + 2 * cameraSpeed*normalize(vec4(sin(g_fTheta)*sin(g_fPhi + M_PI / 2), 0, sin(g_fTheta)*cos(g_fPhi + M_PI / 2), 0));
-
+			else {	// 修正卡牆
+				if (eye.x > 8.0f) eye.x = 8.0f;
+				else if (eye.x < -8.0f) eye.x = -8.0f;
+				if (eye.z > 8.0f) eye.z = 8.0f;
+				else if (eye.z < -8.0f) eye.z = -8.0f;
 			}
 			camera->updateViewLookAt(eye, eye + at);
 

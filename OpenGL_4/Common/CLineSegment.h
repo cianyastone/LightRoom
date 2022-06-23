@@ -31,18 +31,18 @@ private:
 public:
 	CLineSegment(const vec4 SPoint = vec4(-1,0,0,0), const vec4 EPoint = vec4(1,0,0,0), const vec4 vColor = vec4(1,0,0,0) );
 
-	void SetShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderHandle=MAX_UNSIGNED_INT);
-	void SetShader(GLuint uiShaderHandle = MAX_UNSIGNED_INT);
+	void setShader(mat4 &mxModelView, mat4 &mxProjection, GLuint uiShaderHandle=MAX_UNSIGNED_INT);
+	void setShader(GLuint uiShaderHandle = MAX_UNSIGNED_INT);
 	GLuint GetShaderHandle() { return m_uiProgram;}
-	void SetViewMatrix(mat4 &mat);
-	void SetProjectionMatrix(mat4 &mat);
-	void SetTRSMatrix(mat4 &mat);
-	void SetColor(vec4 vColor); // Single color
-	void SetVtxColors(vec4 vSPColor, vec4 vEPColor); // Vertices' Color
+	void setViewMatrix(mat4 &mat);
+	void setProjectionMatrix(mat4 &mat);
+	void setTRSMatrix(mat4 &mat);
+	void setColor(vec4 vColor); // Single color
+	void setVtxColors(vec4 vSPColor, vec4 vEPColor); // Vertices' Color
 	void UpdatePosition(vec4 SPoint, vec4 EPoint);
 
-	void Draw();
-	void DrawW();
+	void draw();
+	void drawW();
 };
 
 
